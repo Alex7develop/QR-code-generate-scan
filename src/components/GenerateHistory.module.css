@@ -1,0 +1,38 @@
+.container {
+  padding: 20px;
+  border: 2px solid #f0f0f0;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+  box-shadow: 5px 5px 15px #aaa, -5px -5px 15px #fff;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.block {
+  padding: 15px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1), -3px -3px 10px rgba(255, 255, 255, 0.5);
+  transition: transform 0.2s ease;
+  max-width: 200px;
+  text-align: center;
+}
+
+.block:hover {
+  transform: scale(1.05);
+}
+
+.text {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .text {
+    font-size: 16px;
+  }
+}
