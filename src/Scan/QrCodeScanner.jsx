@@ -5,14 +5,20 @@ import { SCAN_DATA } from '../constants';
 
 const QrCodeScanner = () => {
   const [value, setValue] = useState(null);
+  const [isLink, setIsLink] = useState(false);
 
   const scanHandler = (result) => {
-    setValue(result[0].rawValue);
+    const scannedValue = result[0].rawValue;
+    setValue(scannedValue);
+
+    // Проверка, является ли значение ссылкой
+    const urlPattern = /^(https?:\/\/[^\s$.?#].[^\s]*)$/;
+    setIsLink(urlPattern.test(scannedValue));
 
     const prevData = JSON.parse(localStorage.getItem(SCAN_DATA) || '[]');
     localStorage.setItem(
       SCAN_DATA,
-      JSON.stringify([...prevData, result[0].rawValue])
+      JSON.stringify([...prevData, scannedValue])
     );
   };
 
@@ -27,7 +33,15 @@ const QrCodeScanner = () => {
           }}
         />
       </div>
-      {value && <p className={style.result}>{value}</p>}
+      {value && (
+        isLink ? (
+          <a href={value} target="_blank" rel="noopener noreferrer" className={style.linkButton}>
+            Перейти по ссылке
+          </a>
+        ) : (
+          <p className={style.result}>{value}</p>
+        )
+      )}
     </div>
   );
 };

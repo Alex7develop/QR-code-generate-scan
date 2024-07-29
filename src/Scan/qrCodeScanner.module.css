@@ -46,3 +46,18 @@
     max-width: 100%;
   }
 }
+
+.linkButton {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px 0;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.linkButton:hover {
+  background-color: #0056b3;
+}
